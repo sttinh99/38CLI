@@ -80,6 +80,21 @@ function delContact(){
     fs.writeFileSync('./data.json',contacts);
 }
 function findContact(){
+    contacts = fs.readFileSync('./data.json',{encoding:'utf8'});
+    contacts = JSON.parse(contacts);
+    console.log(contacts);
+    var stringFind = readlineSync.question('string find: ');
+    for(var i=0;i<=contacts.length;i++){
+        for(var key in contacts[i]){
+            if((contacts[i][key]).search(stringFind)!=-1)
+            {
+                console.log(contacts[i]);
+            }
+        }
+    }
+    // console.log(contacts);
+    // contacts = JSON.stringify(contacts);
+    // fs.writeFileSync('./data.json',contacts);
 }
 function main()
 {
